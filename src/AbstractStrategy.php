@@ -28,7 +28,6 @@ abstract readonly class AbstractStrategy implements \Countable, \IteratorAggrega
      */
     final public function __construct(array $elements, int $k)
     {
-        /* @noinspection PhpConditionAlreadyCheckedInspection */
         if ($k < 1) {
             throw new \InvalidArgumentException("\$k must be greater than zero, got: $k");
         }
@@ -55,8 +54,8 @@ abstract readonly class AbstractStrategy implements \Countable, \IteratorAggrega
     abstract protected function next(array $elements, int $i): array;
 
     /**
-     * @param list<T> $elements
-     * @param list<T> $result
+     * @param list<T>       $elements
+     * @param array<int, T> $result
      *
      * @return iterable<int, list<T>>
      */
@@ -66,7 +65,6 @@ abstract readonly class AbstractStrategy implements \Countable, \IteratorAggrega
 
         foreach ($elements as $i => $element) {
             /** @var list<T> $result */
-            /** @phpstan-ignore parameterByRef.type */
             $result[$slot] = $element;
 
             if ($nextSlot < $this->k) {
