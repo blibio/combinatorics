@@ -1,10 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Blibio\Combinatorics\Test\Permutation;
 
 use Blibio\Combinatorics\Combinatorics;
-use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -12,7 +12,7 @@ final class WithoutRepetitionTest extends TestCase
 {
     public function testThrowsOnEmptyArray(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Cannot generate combinations/permutations from empty array.');
 
         Combinatorics::permutationsWithoutRepetition([], 1);
@@ -20,7 +20,7 @@ final class WithoutRepetitionTest extends TestCase
 
     public function testThrowsOnNumLessThanZero(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('$k must be greater than zero, got: -1');
 
         /** @phpstan-ignore argument.type */
@@ -29,14 +29,14 @@ final class WithoutRepetitionTest extends TestCase
 
     public function testThrowsOnNumGreaterThanElements(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('$k (2) must not be greater than number of elements (1)');
 
         Combinatorics::permutationsWithoutRepetition(['A'], 2);
     }
 
     /**
-     * @param list<mixed> $elements
+     * @param list<mixed>             $elements
      * @param array<array-key, mixed> $expected
      */
     #[DataProvider('results')]
@@ -52,7 +52,7 @@ final class WithoutRepetitionTest extends TestCase
     }
 
     /**
-     * @param list<mixed> $elements
+     * @param list<mixed>             $elements
      * @param array<array-key, mixed> $expected
      */
     #[DataProvider('results')]
@@ -61,7 +61,7 @@ final class WithoutRepetitionTest extends TestCase
         /** @phpstan-ignore argument.type */
         $uut = Combinatorics::permutationsWithoutRepetition($elements, $k);
 
-        self::assertCount(count($expected), $uut);
+        self::assertCount(\count($expected), $uut);
     }
 
     /** @return array<array-key, mixed> */

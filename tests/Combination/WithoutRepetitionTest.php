@@ -1,10 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Blibio\Combinatorics\Test\Combination;
 
 use Blibio\Combinatorics\Combinatorics;
-use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -12,14 +12,14 @@ final class WithoutRepetitionTest extends TestCase
 {
     public function testThrowsOnNumGreaterThanElements(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('$k (2) must not be greater than number of elements (1)');
 
         Combinatorics::combinationsWithoutRepetition(['A'], 2);
     }
 
     /**
-     * @param list<mixed> $elements
+     * @param list<mixed>             $elements
      * @param array<array-key, mixed> $expected
      */
     #[DataProvider('results')]
@@ -35,7 +35,7 @@ final class WithoutRepetitionTest extends TestCase
     }
 
     /**
-     * @param list<mixed> $elements
+     * @param list<mixed>             $elements
      * @param array<array-key, mixed> $expected
      */
     #[DataProvider('results')]
@@ -44,7 +44,7 @@ final class WithoutRepetitionTest extends TestCase
         /** @phpstan-ignore argument.type */
         $uut = Combinatorics::combinationsWithoutRepetition($elements, $k);
 
-        self::assertCount(count($expected), $uut);
+        self::assertCount(\count($expected), $uut);
     }
 
     /** @return array<array-key, mixed> */
@@ -92,7 +92,7 @@ final class WithoutRepetitionTest extends TestCase
                     ['B', 'C', 'D'],
                     ['B', 'C', 'E'],
                     ['B', 'D', 'E'],
-                    ['C', 'D', 'E']
+                    ['C', 'D', 'E'],
                 ],
             ],
         ];
