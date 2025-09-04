@@ -16,6 +16,7 @@ To use the generators, simply create the kind of object you need, and iterate. E
 
 ````php
 <?php
+
 declare(strict_types=1);
 
 use Blibio\Combinatorics\Combinatorics;
