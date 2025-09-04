@@ -1,19 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Blibio\Combinatorics;
 
-use Countable;
-use InvalidArgumentException;
-use IteratorAggregate;
-use Traversable;
-use function count;
-
 /**
  * @template T
- * @implements IteratorAggregate<int, list<T>>
+ *
+ * @implements \IteratorAggregate<int, list<T>>
  */
-abstract readonly class AbstractStrategy implements Countable, IteratorAggregate
+abstract readonly class AbstractStrategy implements \Countable, \IteratorAggregate
 {
     /** @var list<T> */
     protected array $elements;
@@ -26,18 +22,19 @@ abstract readonly class AbstractStrategy implements Countable, IteratorAggregate
 
     /**
      * @param array<array-key, T> $elements
-     * @param int<1, max> $k
-     * @throws InvalidArgumentException
+     * @param int<1, max>         $k
+     *
+     * @throws \InvalidArgumentException
      */
     final public function __construct(array $elements, int $k)
     {
-        /** @noinspection PhpConditionAlreadyCheckedInspection */
+        /* @noinspection PhpConditionAlreadyCheckedInspection */
         if ($k < 1) {
-            throw new InvalidArgumentException("\$k must be greater than zero, got: $k");
+            throw new \InvalidArgumentException("\$k must be greater than zero, got: $k");
         }
 
         $this->elements = array_values($elements);
-        $this->n = count($this->elements);
+        $this->n = \count($this->elements);
         $this->k = $k;
 
         $this->assertValid();
@@ -45,13 +42,14 @@ abstract readonly class AbstractStrategy implements Countable, IteratorAggregate
 
     protected function assertValid(): void
     {
-        if ($this->n === 0) {
-            throw new InvalidArgumentException('Cannot generate combinations/permutations from empty array.');
+        if (0 === $this->n) {
+            throw new \InvalidArgumentException('Cannot generate combinations/permutations from empty array.');
         }
     }
 
     /**
      * @param list<T> $elements
+     *
      * @return list<T>
      */
     abstract protected function next(array $elements, int $i): array;
@@ -59,6 +57,7 @@ abstract readonly class AbstractStrategy implements Countable, IteratorAggregate
     /**
      * @param list<T> $elements
      * @param list<T> $result
+     *
      * @return iterable<int, list<T>>
      */
     final protected function generate(array $elements, int $slot = 0, array &$result = [], int &$index = 0): iterable
@@ -78,7 +77,7 @@ abstract readonly class AbstractStrategy implements Countable, IteratorAggregate
         }
     }
 
-    final public function getIterator(): Traversable
+    final public function getIterator(): \Traversable
     {
         yield from $this->generate($this->elements);
     }
