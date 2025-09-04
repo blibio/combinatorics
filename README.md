@@ -1,6 +1,7 @@
 # blibio/combinatorics
 
 [![Software License][badge-license]][license]
+[![Coverage Status][badge-coverage]][coverage]
 
 Simple PHP 8.3+ [generators][] to create:
 
@@ -41,4 +42,6 @@ The blibio/combinatorics library is copyright © Stephan Six and licensed for us
 [combinations]: https://en.wikipedia.org/wiki/Combination
 [permutations]: https://en.wikipedia.org/wiki/Permutation
 [badge-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[badge-coverage]: https://codecov.io/gh/blibio/combinatorics/branch/main/graph/badge.svg
 [license]: https://github.com/blibio/combinatorics/blob/main/LICENSE
+[coverage]: https://codecov.io/gh/blibio/combinatorics

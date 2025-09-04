@@ -50,7 +50,7 @@
     "scripts": {
         "test": "phpunit",
         "stan": "phpstan analyse",
-        "coverage": "XDEBUG_MODE=coverage phpunit --coverage-html coverage-html --coverage-text",
+        "coverage": "XDEBUG_MODE=coverage phpunit --coverage-html coverage-html --coverage-text --coverage-clover coverage.xml",
         "coverage-text": "XDEBUG_MODE=coverage phpunit --coverage-text",
         "cs-fix": "php-cs-fixer fix",
         "cs-check": "php-cs-fixer fix --dry-run --diff"
