@@ -61,7 +61,7 @@ abstract readonly class AbstractStrategy implements Countable, IteratorAggregate
      * @param list<T> $result
      * @return iterable<int, list<T>>
      */
-    private function generate(array $elements, int $slot = 0, array &$result = []): iterable
+    final protected function generate(array $elements, int $slot = 0, array &$result = [], int &$index = 0): iterable
     {
         $nextSlot = $slot + 1;
 
@@ -71,9 +71,9 @@ abstract readonly class AbstractStrategy implements Countable, IteratorAggregate
             $result[$slot] = $element;
 
             if ($nextSlot < $this->k) {
-                yield from $this->generate($this->next($elements, $i), $nextSlot, $result);
+                yield from $this->generate($this->next($elements, $i), $nextSlot, $result, $index);
             } else {
-                yield $result;
+                yield $index++ => $result;
             }
         }
     }

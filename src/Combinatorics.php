@@ -7,10 +7,6 @@ use InvalidArgumentException;
 
 final readonly class Combinatorics
 {
-    private function __construct()
-    {
-    }
-
     /**
      * @template U
      * @param array<array-key, U> $elements

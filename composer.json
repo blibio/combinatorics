@@ -48,6 +48,8 @@
     },
     "scripts": {
         "test": "phpunit",
-        "stan": "phpstan analyse"
+        "stan": "phpstan analyse",
+        "coverage": "XDEBUG_MODE=coverage phpunit --coverage-html coverage-html --coverage-text",
+        "coverage-text": "XDEBUG_MODE=coverage phpunit --coverage-text"
     }
 }
