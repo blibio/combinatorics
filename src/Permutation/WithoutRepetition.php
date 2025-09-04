@@ -11,7 +11,7 @@ use Override;
  * @template T
  * @extends AbstractStrategy<T>
  */
-final class WithoutRepetition extends AbstractStrategy
+final readonly class WithoutRepetition extends AbstractStrategy
 {
     #[Override]
     protected function assertValid(): void

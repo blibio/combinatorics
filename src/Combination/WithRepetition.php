@@ -11,7 +11,7 @@ use function array_slice;
  * @template T
  * @extends AbstractStrategy<T>
  */
-final class WithRepetition extends AbstractStrategy
+final readonly class WithRepetition extends AbstractStrategy
 {
     #[Override]
     protected function next(array $elements, int $i): array

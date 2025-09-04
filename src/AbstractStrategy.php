@@ -13,16 +13,16 @@ use function count;
  * @template T
  * @implements IteratorAggregate<int, list<T>>
  */
-abstract class AbstractStrategy implements Countable, IteratorAggregate
+abstract readonly class AbstractStrategy implements Countable, IteratorAggregate
 {
     /** @var list<T> */
-    protected readonly array $elements;
+    protected array $elements;
 
     /** @var int<0, max> */
-    protected readonly int $n;
+    protected int $n;
 
     /** @var int<1, max> */
-    protected readonly int $k;
+    protected int $k;
 
     /**
      * @param array<array-key, T> $elements
