@@ -23,18 +23,17 @@ jobs:
         php-version: ${{ matrix.php-version }}
         extensions: gmp, xdebug
         coverage: xdebug
-    
+
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      run: composer self-update && composer install && composer dump-autoload
     
     - name: Run PHPStan
-      run: composer stan
+      run: vendor/bin/phpstan --no-progress
     
-    - name: Run tests with coverage
-      run: composer coverage
-    
+    - name: Run tests and collect coverage
+      run: vendor/bin/phpunit --coverage-clover coverage.xml .
+
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        file: ./coverage.xml
-        fail_ci_if_error: true
+      uses: codecov/codecov-action@v5
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
