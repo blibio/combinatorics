@@ -23,9 +23,17 @@ use Blibio\Combinatorics\Combinatorics;
 
 $elements = ['A', 'B', 'C', 'D'];
 $k = 3;
-$it = Combinatorics::combinationsWithoutRepetition($elements, $k);
+
+// Using the boolean parameter:
+$it = Combinatorics::combinations($elements, $k, withRepetition: false);
 
 // or:
+// $it = Combinatorics::combinations($elements, $k, withRepetition: true);
+// $it = Combinatorics::permutations($elements, $k, withRepetition: false);
+// $it = Combinatorics::permutations($elements, $k, withRepetition: true);
+
+// Using the explicit method names:
+// $it = Combinatorics::combinationsWithoutRepetition($elements, $k);
 // $it = Combinatorics::combinationsWithRepetition($elements, $k);
 // $it = Combinatorics::permutationsWithoutRepetition($elements, $k);
 // $it = Combinatorics::permutationsWithRepetition($elements, $k);
