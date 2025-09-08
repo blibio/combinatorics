@@ -10,7 +10,15 @@ Simple PHP 8.3+ [generators][] to create:
 
 ---
 
-#### Usage
+## Installation
+
+Install via Composer:
+
+```bash
+composer require blibio/combinatorics
+```
+
+## Usage
 
 To use the generators, simply create the kind of object you need, and iterate. E.g.:
 
